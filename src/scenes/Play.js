@@ -91,7 +91,7 @@ class Play extends Phaser.Scene {
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)) {
             this.scene.restart()
         }
-        
+
         // scroll background
         this.starfield.tilePositionX -= 4;
 
@@ -153,5 +153,8 @@ class Play extends Phaser.Scene {
         // score add and text update
         this.p1Score += ship.points
         this.scoreLeft.text = this.p1Score
+
+        this.sound.play('sfx-explosion')
+
     }
 }

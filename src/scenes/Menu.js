@@ -15,7 +15,12 @@ class Menu extends Phaser.Scene {
         frameHeight: 32,
         startFrame: 0,
         endFrame: 9
-})
+    })
+
+        // load audio
+        this.load.audio('sfx-select', './assets/sfx-select.wav')
+        this.load.audio('sfx-explosion', './assets/sfx-explosion.wav')
+        this.load.audio('sfx-shot', './assets/sfx-shot.wav')
     }
 
     create() {
