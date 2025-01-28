@@ -51,6 +51,17 @@ class Play extends Phaser.Scene {
             10
         ).setOrigin(0, 0);
 
+        // add fast ships
+        this.fastShip = new FastShip(
+            this,
+            game.config.width,
+            borderUISize * 4 + borderPadding * 8, // in between ship03 and ship02
+            'fastship',
+            0,
+            50
+        ).setOrigin(0, 0);
+        
+
         // define keys
         keyFIRE = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.F);
         keyRESET = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R);
@@ -111,6 +122,7 @@ class Play extends Phaser.Scene {
             this.ship01.update() // update spaceships (x3)
             this.ship02.update()
             this.ship03.update()
+            this.fastShip.update()
         }
 
         // check collisions
@@ -125,6 +137,10 @@ class Play extends Phaser.Scene {
         if (this.checkCollision(this.p1Rocket, this.ship01)) {
             this.p1Rocket.reset();
             this.shipExplode(this.ship01);
+        }
+        if(this.checkCollision(this.p1Rocket, this.fastShip)) {
+            this.p1Rocket.reset();
+            this.shipExplode(this.fastShip);
         }
     }
 

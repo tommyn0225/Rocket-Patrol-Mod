@@ -1,10 +1,9 @@
-//src/prefabs/Spaceship.js
-class Spaceship extends Phaser.GameObjects.Sprite {
+//src/prefabs/Fastship.js
+class FastShip extends Spaceship {
     constructor(scene, x, y, texture, frame, pointValue) {
-        super(scene, x, y, texture, frame)
-        scene.add.existing(this) // add to existing scene
-        this.points = pointValue // store pointValue
-        this.moveSpeed = game.settings.spaceshipSpeed // spaceship speed in pixels/frame
+        super(scene, x, y, texture, frame, pointValue)
+        this.moveSpeed = game.settings.spaceshipSpeed * 1.5
+        this.setScale(0.5)
     }
 
     update() {
@@ -22,5 +21,3 @@ class Spaceship extends Phaser.GameObjects.Sprite {
         this.x = game.config.width
     }
 }
-
-
