@@ -71,6 +71,8 @@ class Play extends Phaser.Scene {
         // initialize score
         this.p1Score = 0
 
+        
+
         // display score
         let scoreConfig = {
             fontFamily: 'Courier',
@@ -85,6 +87,14 @@ class Play extends Phaser.Scene {
             fixedWidth: 100
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig)
+
+        // display timer
+        this.timerDisplay = this.add.text(
+            game.config.width - borderUISize - borderPadding * 10,
+            borderUISize + borderPadding * 2,
+            Math.ceil(game.settings.gameTimer / 1000),
+            scoreConfig
+        )
         
         // GAME OVER flag
         this.gameOver = false
@@ -110,13 +120,13 @@ class Play extends Phaser.Scene {
         // scroll background
         this.starfield.tilePositionX -= 4;
 
+        // update timer display
+        this.timerDisplay.text = Math.ceil(this.clock.getRemaining() / 1000)
+
         // update rocket
         this.p1Rocket.update();
 
         // update spaceships
-        /*this.ship01.update();
-        this.ship02.update();
-        this.ship03.update();*/
         if(!this.gameOver) {
             this.p1Rocket.update() // update rocket sprite
             this.ship01.update() // update spaceships (x3)
@@ -173,6 +183,9 @@ class Play extends Phaser.Scene {
         // score add and text update
         this.p1Score += ship.points
         this.scoreLeft.text = this.p1Score
+
+        // add time on hit
+        this.clock.delay += 2000; //+2 seconds
 
         this.sound.play('sfx-explosion')
 
