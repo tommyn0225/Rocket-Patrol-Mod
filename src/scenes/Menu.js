@@ -10,6 +10,9 @@ class Menu extends Phaser.Scene {
         this.load.image('spaceship', './assets/spaceship.png')
         this.load.image('starfield', './assets/starfield.png')
 
+        // load titlescreen
+        this.load.image('titleArt', './assets/titlescreen.png')
+
         // load fasthip
         this.load.image('fastship', './assets/fastship.png')
 
@@ -28,6 +31,8 @@ class Menu extends Phaser.Scene {
     }
 
     create() {
+        // display titlescreen art
+        this.add.image(game.config.width / 2, game.config.height / 2, 'titleArt').setOrigin(0.5, 0.5);
         // animation configuration
         this.anims.create({
             key: 'explode',
@@ -50,11 +55,13 @@ class Menu extends Phaser.Scene {
         }
 
         // display menu text
-        this.add.text(game.config.width/2, game.config.height/2 - borderUISize - borderPadding, 'ROCKET PATROL', menuConfig).setOrigin(0.5)
-        this.add.text(game.config.width/2, game.config.height/2, 'Use <--> arrows to move & (F) to fire', menuConfig).setOrigin(0.5)
-        menuConfig.backgroundColor = '#00FF00'
-        menuConfig.color = '#000'
-        this.add.text(game.config.width/2, game.config.height/2 + borderUISize + borderPadding, 'Press <- for Novice or -> for Expert', menuConfig).setOrigin(0.5)
+        // Adjusted positions for menu text
+        this.add.text(game.config.width / 2, game.config.height / 2 + 100, 'ROCKET PATROL', menuConfig).setOrigin(0.5);
+        this.add.text(game.config.width / 2, game.config.height / 2 + 150, 'Use <--> arrows to move & (F) to fire', menuConfig).setOrigin(0.5);
+        menuConfig.backgroundColor = '#00FF00';
+        menuConfig.color = '#000';
+        this.add.text(game.config.width / 2, game.config.height / 2 + 200, 'Press <- for Novice or -> for Expert', menuConfig).setOrigin(0.5);
+
 
         // define keys
         keyLEFT = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.LEFT)
