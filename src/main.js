@@ -24,6 +24,9 @@ actual in game timer
 - rocket pays attention to the mouse position relative to the game screen. On left click, 
 the rocket snaps to mouse position and fires the rocket
 
+** Create a new title screen (e.g., new artwork, typography, layout) (3)
+- created artwork using Pixilart.com, shifting existing UI downward
+
 ** 
 
 */
